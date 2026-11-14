@@ -179,3 +179,26 @@ Registered participants receive the confirmed date, room, and kickoff time from
 **universityprograms@bluestaq.com**. One winner receives **both a paid summer internship at Bluestaq headquarters
 in Colorado Springs and a full one-year scholarship that pays tuition**. The internship is subject
 to standard internship eligibility and hiring requirements.
+
+## Solution Architecture & Multi-Label Attribution (`Nathanael-Hadgu`)
+
+### 1. Exact Reproduction Commands
+
+From the repository root:
+
+```bash
+python -m venv .venv
+# Windows PowerShell:
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+python scripts/get_data.py
+
+# Generate and validate submission.json:
+python submission/baseline.py --data data --output submission.json \
+  --github-handle Nathanael-Hadgu \
+  --repo-url [https://github.com/Nathanael-Hadgu/Bluestaq](https://github.com/Nathanael-Hadgu/Bluestaq) \
+  --display-name "Nathanael Hadgu"
+python submission/validate_submission.py submission.json
+
+# Launch the interactive Operator Decision & SDA Attribution Console:
+python -m streamlit run dashboard.py
